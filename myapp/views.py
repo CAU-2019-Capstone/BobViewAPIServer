@@ -13,6 +13,9 @@ from django.shortcuts import get_object_or_404
 import random
 import datetime
 from django.utils import timezone
+from django.core.files.storage import FileSystemStorage
+from django.shortcuts import render
+from django.conf import settings
 
 # Create your views here.
 def post_list(request):
@@ -91,6 +94,31 @@ def user_active(request, token):
         message = "이메일이 인증되었습니다."
     return render(request, 'myapp/success.html', {'message':message })
 
+
+def mypage(request):
+    pass
+
+def rest_image_regi(request):
+    pass
+
+def simple_upload(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        current_user = request.user
+        rest_info = get_object_or_404(RestaurantInfo, owner=current_user.id)
+        myfile = request.FILES['myfile']
+        print(myfile.name)
+        print(myfile)
+        rest_info.restaurant_image = myfile.name
+
+        fs = FileSystemStorage()
+        uploaded_file_url = fs.url(filename)
+
+        rest_info.save()
+        filename = fs.save(myfile.name, myfile)
+        return render(request, 'myapp/restaurant.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
+    return HttpResponse('파일 업로드 실패. 다시 시도 해보세요.')
 
 # class UserRegistrationView(CreateView):
 #     model = get_user_model()

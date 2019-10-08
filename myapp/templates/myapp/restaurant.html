@@ -8,9 +8,18 @@
         <h2> 매장 정보 </h2> 
         <form name="restaurant" action="/mypage/add-restaurant/" method="post">{% csrf_token %}
             restaurant name : <input type="text" name="username" > </br>
-            restaurant latitude : <input type="number" name="latitude" > </br>
-            restaurant longitude : <input type="number" name="latitude" > </br>
+            restaurant latitude : <input type="number" step=any name="latitude" > </br>
+            restaurant longitude : <input type="number" step=any name="longitude" > </br>
             <input type="submit" value="저장">
         </form>
+        <h2> 매장 사진 </h2> 
+        <form method="post" enctype="multipart/form-data" action="/mypage/add-restaurant/">{% csrf_token %}
+            <input type="file" name="myfile">
+            <button type="submit" value="업로드">
+        </form>
+        
+        {% if uploaded_file_url %}
+            <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+        {% endif %}
     </body>
 </html>

@@ -32,7 +32,7 @@ class RestaurantInfo(models.Model):
     restaurant_name = models.CharField(primary_key=True, max_length=45)
     restaurant_gps = models.CharField(max_length=45)
     restaraunt_rating = models.FloatField(blank=True, null=True)
-    restaurant_image = models.CharField(max_length=1024)
+    restaurant_image = models.ImageField(blank=True, null=True)
 
     class Meta:
         managed = True

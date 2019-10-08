@@ -144,6 +144,8 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # 사이트와 관련한 자동응답을 받을 이메일 주소,'webmaster@localhost'
 
-
-EASY_MAPS_GOOGLE_KEY = 'AIzaSyBPnnCeH8pLkE4Hfnk_Sw0f1wDLp1gAhQM'
+# EASY_MAPS_GOOGLE_KEY = 'AIzaSyBPnnCeH8pLkE4Hfnk_Sw0f1wDLp1gAhQM'
 # EASY_MAPS_CENTER = (-41.3, 32)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

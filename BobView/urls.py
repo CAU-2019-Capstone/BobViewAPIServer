@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from myapp import views
 # from myapp.views import UserVerificationView, UserRegistrationView, UserLoginView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +30,8 @@ urlpatterns = [
     path('success/', views.success, name='success'),
     # path('user/<pk>/verify/<token>/', UserVerificationView.as_view()),
     path('active/<token>', views.user_active, name='user_active'),
-]
+] 
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
