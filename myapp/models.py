@@ -28,14 +28,14 @@ class UserInfo(AbstractUser):
 
 class RestaurantInfo(models.Model):
     owner = models.OneToOneField(UserInfo, on_delete=models.CASCADE)     # user_info와 일대일 관계
-    restaurant_id = models.CharField(primary_key=True, max_length=45)
-    restaurant_name = models.CharField(max_length=45)
+    # owner = models.ForeignKey(UserInfo, on_delete=models.CASCADE)     # user_info와 일대일 관계
+    restaurant_name = models.CharField(primary_key=True, max_length=45)
     restaurant_gps = models.CharField(max_length=45)
     restaraunt_rating = models.FloatField(blank=True, null=True)
     restaurant_image = models.CharField(max_length=1024)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'restaurant_info'
 
 
@@ -47,7 +47,7 @@ class Order(models.Model):
     table_id = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'order'
         unique_together = (('user', 'order_id'),)
 
@@ -62,7 +62,7 @@ class MenuInfo(models.Model):
     menu_image = models.CharField(max_length=1024)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'menu_info'
 
 
@@ -73,5 +73,5 @@ class OrderMenu(models.Model):
     menu_num = models.IntegerField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'order_menu'

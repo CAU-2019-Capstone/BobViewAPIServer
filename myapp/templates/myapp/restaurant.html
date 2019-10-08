@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+    </head>
+    <body>
+        <h2> 매장 정보 </h2> 
+        <form name="restaurant" action="/mypage/add-restaurant/" method="post">{% csrf_token %}
+            restaurant name : <input type="text" name="username" > </br>
+
+
+            <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+            <script>
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+                        // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+                    }
+                }).open();
+            </script>
+
+            restaurant gps : <input type="password" name="password" > </br>
+
+
+
+
+            restaurant image : <input type="password" name="password" > </br>
+            <input type="submit" value="저장">
+        </form>
+    </body>
+</html>
